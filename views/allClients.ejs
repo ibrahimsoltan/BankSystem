@@ -1,0 +1,21 @@
+<!-- allClients.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>All Clients</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="my-4">All Clients</h1>
+
+    <ul class="list-group">
+      <% clients.forEach(function(client) { %>
+        <li class="list-group-item"><%= client.name %></li>
+      <% }); %>
+    </ul>
+  </div>
+</body>
+</html>

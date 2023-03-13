@@ -1,0 +1,24 @@
+{
+  "name": "banksystem",
+  "version": "1.0.0",
+  "description": "bankSystemApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bootstrap": "^5.2.3",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jquery": "^3.6.4",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.4.6",
+    "morgan": "^1.10.0",
+    "popper.js": "^1.16.1"
+  }
+}

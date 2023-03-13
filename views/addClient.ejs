@@ -1,0 +1,23 @@
+<!-- addClient.ejs -->
+
+<!DOCTYPE html>
+<html>
+
+    <%- include("./partials/head.ejs") %>
+
+<body>
+    <center>
+  <h1>Add Client</h1>
+
+  <form action="/addClient" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+
+    <label for="balance">Balance:</label>
+    <input type="number" name="balance" required>
+
+    <button type="submit">Add Client</button>
+  </form>
+</center>
+</body>
+</html>
