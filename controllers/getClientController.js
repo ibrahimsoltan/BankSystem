@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
     const client = await Client.findById(req.params.id);
     
     const result = await Client.find();
-    res.render('clientView', { client:client , clients:result, title: 'Client Page' });
+    res.render('clientView', { selectedClient:client , clients:result, title: 'Client Page' });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

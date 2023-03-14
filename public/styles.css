@@ -1,39 +1,52 @@
 
-body {
-    font-family: sans-serif;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    max-width: 30rem;
-  }
-  
-  label {
-    margin-bottom: 0.5rem;
-  }
-  
-  input[type="text"],
-  input[type="number"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    margin-bottom: 1rem;
-  }
-  
-  button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
 
-  /* styles.css */
+/* styles.css */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding-top: 50px;
+}
 
-.list-group-item:hover {
-  background-color: #d3d3d3;
+h1 {
+
+  margin-bottom: 50px;
+}
+
+form {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 0px 5px #ccc;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
+select.form-control {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.text-primary {
+  font-weight: bold;
+}
