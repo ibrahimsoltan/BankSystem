@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="my-4">Transfer Money</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <form action="/transfer" method="POST">
+              <div class="form-group">
+                <h3  for="fromAccount">Welcome  <%= client.name %></h3>
+                <input type="hidden" class="form-control" id="fromAccount" name="fromAccount" value="<%= client._id %>">
+              </div>
+              <div class="form-group">
+                <label for="toAccount">Transfer To:</label>
+                <select class="form-control" id="toAccount" name="toAccount">
+                  <% clients.forEach(function(client) { %>
+                    <option value="<%= client._id %>"><%= client.name %></option>
+                  <% }); %>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" class="form-control" id="amount" name="amount">
+              </div>
+              <button type="submit" class="btn btn-primary">Transfer</button>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <!-- Add any additional content here -->
+          </div>
+        </div>
+      </div>
+      
+  </body>

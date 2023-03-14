@@ -29,3 +29,11 @@ body {
     padding: 0.5rem 1rem;
     cursor: pointer;
   }
+
+  /* styles.css */
+
+.list-group-item:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
+}
+

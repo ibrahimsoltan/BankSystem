@@ -1,1 +1,1 @@
-module.exports= (req, res) => res.render('addClient', { title: 'Add Client' });
+module.exports= (req, res) => res.render('addClientView', { title: 'Add Client' });
