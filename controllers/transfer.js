@@ -6,18 +6,18 @@ module.exports = async (req, res) => {
         console.log(fromAccount);
         console.log(toAccount);
         console.log(amount);
-        fromClient = await Client.findById(fromAccount);
-        toClient = await Client.findById(toAccount);
-        Number(fromClient.balance);
-        Number(amount);
-        Number(toClient.balance);
+        const fromClient = await Client.findById(fromAccount);
+        const toClient = await Client.findById(toAccount);
+        const amountNumber = Number(amount);
+
         console.log(fromClient.balance);
-        console.log(amount);
+        console.log(amountNumber);
         console.log(toClient.balance);
-        fromClient.balance -= amount;
-        toClient.balance += amount;
-        var num ;
-        Number(num) = amount + 100;
+        fromClient.balance -= amountNumber;
+        toClient.balance += amountNumber;
+        
+        var num;
+        num = amountNumber + 100;
         console.log(num);
         console.log(fromClient.balance);
         console.log(toClient.balance);
@@ -31,4 +31,3 @@ module.exports = async (req, res) => {
         console.log(error);
     }
 }
-

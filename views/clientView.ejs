@@ -1,38 +1,125 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
-  </head>
-  <body>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .navbar {
+      background-color: #0f5298;
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 960px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 1rem;
+      color: #0f5298;
+    }
+
+    .transfer-form {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 0.25rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      padding: 0.5rem;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    button[type="submit"] {
+      background-color: #0f5298;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0c4686;
+    }
+
+    .client-info {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+  <script>
+    function validateTransfer() {
+      const amountInput = document.getElementById('amount');
+      const amount = parseFloat(amountInput.value);
+      const maxAmount = parseFloat('<%= client.balance %>');
+
+      if (amount > maxAmount || isNaN(amount)) {
+        alert('You cannot transfer more than your balance.');
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <h1 class="my-4">Transfer Money</h1>
-        <div class="row">
-          <div class="col-md-6">
-            <form action="/transfer" method="POST">
-              <div class="form-group">
-                <h3  for="fromAccount">Welcome  <%= client.name %></h3>
-                <input type="hidden" class="form-control" id="fromAccount" name="fromAccount" value="<%= client._id %>">
-              </div>
-              <div class="form-group">
-                <label for="toAccount">Transfer To:</label>
-                <select class="form-control" id="toAccount" name="toAccount">
-                  <% clients.forEach(function(client) { %>
-                    <option value="<%= client._id %>"><%= client.name %></option>
-                  <% }); %>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="amount">Amount:</label>
-                <input type="number" class="form-control" id="amount" name="amount">
-              </div>
-              <button type="submit" class="btn btn-primary">Transfer</button>
-            </form>
+      <a class="navbar-brand" href="/home">IMS Bank</a>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h1>Transfer Money</h1>
+    <div class="transfer-form">
+      <form action="/transfer" method="POST" onsubmit="return validateTransfer();">
+        <div class="form-group">
+          <div class="client-info">
+            <h4 for="fromAccount">Welcome <%= client.name %></h4>
+            <h4>Balance: <%= client.balance %></h4>
           </div>
-          <div class="col-md-6">
-            <!-- Add any additional content here -->
-          </div>
+          
+          <input type="hidden" class="form-control" id="fromAccount" name="fromAccount" value="<%= client._id %>">
         </div>
-      </div>
-      
-  </body>
+
+        <div class="form-group">
+          <label for="toAccount">Transfer To:</label>
+          <select class="form-control" id="toAccount" name="toAccount">
+            <% clients.forEach(function(otherClient) { %>
+              <% if (otherClient._id.toString() !== client._id.toString()) { %>
+                <option value="<%= otherClient._id %>"><%= otherClient.name %></option>
+              <% } %>
+            <% }); %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" class="form-control" id="amount" name="amount">
+        </div>
+        <button type="submit" class="btn">Transfer</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
