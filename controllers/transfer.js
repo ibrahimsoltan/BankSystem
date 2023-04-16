@@ -1,6 +1,7 @@
 const Client = require('../models/client');
+
 module.exports = async (req, res) => {
-    try{
+    try {
         console.log('inside transfer');
         const {fromAccount, toAccount, amount} = req.body;
         console.log(fromAccount);
@@ -24,10 +25,9 @@ module.exports = async (req, res) => {
 
         await fromClient.save();
         await toClient.save();
-        res.redirect('/')
-        
-    }
-    catch(error){
+        res.redirect('/');
+
+    } catch (error) {
         console.log(error);
     }
 }

@@ -6,6 +6,8 @@ const mongoose  = require('mongoose')
 app.use(express.json())
 app.use(express.static('public'));
 
+
+
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 const addClient = require('./controllers/addClient');
 const addClientControllerToView = require('./controllers/addClientControllerToView');
@@ -21,6 +23,7 @@ mongoose.connect(DbURI,
     .then(result => app.listen(3000, () => console.log('listening on port 3000')))
     .catch(err => console.log(err)
 )
+
 
 
 
