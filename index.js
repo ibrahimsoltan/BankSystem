@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();  
+const PORT = process.env.PORT || 3030;
 
 
 const mongoose  = require('mongoose')
 app.use(express.json())
 app.use(express.static('public'));
 
-
+// app.listen(PORT, () => {
+//     console.log(`server started on port ${PORT}`);
+//   });
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 const addClient = require('./controllers/addClient');
@@ -20,7 +23,9 @@ const homeController = require('./controllers/homeController');
 const DbURI = 'mongodb+srv://ibrahim:ibrahim1234@student.lmygtpz.mongodb.net/BankDB?retryWrites=true&w=majority'
 mongoose.connect(DbURI,
     { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(result => app.listen(3000, () => console.log('listening on port 3000')))
+    .then(result => app.listen(PORT, () => {
+        console.log(`server started on port ${PORT}`);
+      }))
     .catch(err => console.log(err)
 )
 
